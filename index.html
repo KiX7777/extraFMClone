@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extra FM</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="circle"></div>
+      <div class="topStrip">
+        <div class="volumeStrip">
+          <div class="mute"></div>
+          <input id="volume" type="range" value="50" min="1" max="100" />
+        </div>
+        <div class="prev">
+          <img src="./prev-off.png" alt="" />
+        </div>
+        <div class="next">
+          <img src="./next-off.png" alt="" />
+        </div>
+        <div class="play">
+          <!-- <img src="./play-off.png" alt="" /> -->
+        </div>
+        <div class="socialLogos">
+          <a target="_blank" href="https://www.facebook.com/ExtraFMZagreb/">
+            <div class="logo"><img src="./fb.png" alt="" /></div>
+          </a>
+          <a
+            target="_blank"
+            href="https://twitter.com/intent/tweet?url=http://streaming.extrafm.hr/stream/player.html&text=EXTRA%20FM"
+          >
+            <div class="logo"><img src="./twitter.png" alt="" /></div>
+          </a>
+          <div id="playlist" class="logo">
+            <img src="./playlist.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <audio src="songs/Rade Lacković - Avantura.mp3"></audio>
+        <div class="playingInfo">
+          <p>
+            <span>Radio Station:</span>
+            <span class="radioStation">EXTRA FM</span>
+          </p>
+          <p>
+            <span>Now Playing:</span>
+            <span class="nowPlaying">RADE LACKOVIĆ - AVANTURA</span>
+          </p>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="chosenStation">
+          <img src="categories_arrow_bg.png" alt="" />
+          <img src="categories_arrow_bg.png" alt="" />
+          <p class="currentStation">EXTRA FM</p>
+        </div>
+        <div class="stationsMenu">
+          <p class="current active">EXTRA FM</p>
+          <p class="current">EXTRA Throwback</p>
+          <p class="current">EXTRA Fresh</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

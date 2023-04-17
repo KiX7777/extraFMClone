@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100vh;
+}
+
+body {
+  background-color: #2a242a;
+  font-family: 'Montserrat';
+}
+
+.container {
+  min-width: 50rem;
+  width: 45%;
+  background-color: #e5004e;
+  /* height: 40rem; */
+  margin: 0 auto;
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.topStrip {
+  width: 100%;
+  position: relative;
+  background-color: #1a171a;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+.info {
+  border-bottom: 1px solid #1a171a;
+  height: 11.1rem;
+}
+
+.circle {
+  height: 12rem;
+  width: 12rem;
+  border: 3px solid white;
+  border-radius: 50%;
+  position: absolute;
+  /* top: -50%; */
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -45%);
+}
+
+.prev,
+.next {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 37%;
+  top: 20%;
+  transform: translate(-50%, -35%);
+  z-index: 10;
+  cursor: pointer;
+}
+.next {
+  left: 63%;
+}
+
+.prev img,
+.next img {
+  width: 90%;
+}
+
+.play {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  cursor: pointer;
+  z-index: 20;
+  background: url(play-off.png);
+  width: 5rem;
+  height: 5rem;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 300ms ease-in-out;
+}
+.play.playing {
+  background: url(pause-off.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.play img {
+  width: 100%;
+}
+
+.socialLogos {
+  margin-left: auto;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  margin-right: 3rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.logo img {
+  width: 80%;
+}
+/* /*  */
+input[type='range'] {
+  overflow: hidden;
+  width: 7rem;
+  height: 0.5rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #454545;
+  border-radius: 10px;
+  margin-left: 1rem;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  width: 1px;
+  -webkit-appearance: none;
+  height: 10px;
+  background: white;
+  box-shadow: -80px 0 0 80px #e5004e;
+}
+*/ .volumeStrip img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.volumeStrip {
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+}
+
+.mute {
+  background: url(volume-off.png);
+  width: 1rem;
+  height: 1rem;
+  background-repeat: no-repeat;
+  transition: all 300ms ease-in-out;
+  margin-right: -0.5rem;
+}
+.mute.muted {
+  background: url(volumeMute-off.png);
+  background-repeat: no-repeat;
+}
+
+.info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.playingInfo {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.playingInfo span {
+  font-weight: bold;
+}
+
+.bottom {
+  padding: 2rem;
+  height: 30rem;
+}
+.bottom.hideBottom {
+  animation: hide 400ms forwards ease-in-out;
+}
+
+.bottom {
+  animation: show 400ms forwards ease-in-out;
+}
+
+@keyframes show {
+  from {
+    display: none;
+    opacity: 0;
+    padding: 0;
+    height: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+    padding: 0;
+    height: 0;
+  }
+}
+
+.chosenStation {
+  width: 100%;
+  height: 2.4rem;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.chosenStation img {
+  position: absolute;
+  left: 1rem;
+}
+.chosenStation img:last-of-type {
+  right: 1rem;
+  left: initial;
+}
+.currentStation {
+  cursor: pointer;
+}
+
+.currentStation:hover {
+  color: rgb(60, 147, 247);
+}
+
+.stationsMenu {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #252525;
+  color: rgb(60, 147, 247);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.2rem;
+  animation: 400ms show;
+}
+
+.stationsMenu.open {
+  animation: hide 400ms forwards;
+}
+
+.playingInfo .radioStation,
+.playingInfo .nowPlaying {
+  font-weight: 400;
+}
+
+.current {
+  padding: 1rem;
+  display: inline-block;
+  width: 100%;
+  background-color: black;
+  color: #4d4d4d;
+  transition: 300ms ease;
+  cursor: pointer;
+}
+
+.current:not(:last-of-type) {
+  border-bottom: 1px solid #4d4d4d;
+}
+
+.current:hover {
+  background-color: #454545;
+  color: white;
+}
+
+.current.active {
+  color: rgb(60, 147, 247);
+}
+
+@media (max-width: 500px) {
+}
