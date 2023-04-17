@@ -127,7 +127,3 @@ current.forEach((el) =>
     song.play();
   })
 );
-
-fetch('http://streams.extrafm.hr:8110/7.html')
-  .then((res) => res.text())
-  .then((data) => console.log(data));
