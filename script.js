@@ -16,7 +16,6 @@ const stationsMenu = document.querySelector('.stationsMenu');
 const nowPlaying = document.querySelector('.nowPlaying');
 
 const songs = [
-  'http://streams.extrafm.hr:8110/stream',
   'songs/Rade Lacković - Avantura.mp3',
   'songs/MINA KOSTIĆ - GRUDI OD BETONA.mp3',
   'songs/Marinko Rokvić - Tri U Jednoj.mp3',
@@ -45,18 +44,6 @@ prevBtn.addEventListener('click', () => {
   nowPlaying.innerText = songName;
   song.play();
   playBtn.classList.add('playing');
-  if (currentSong > 0) {
-    radioStation.innerText = 'LOCAL';
-    currentStation.innerText = 'LOCAL';
-    current.forEach((el) => el.classList.remove('active'));
-    current[1].classList.add('active');
-  } else {
-    radioStation.innerText = 'EXTRA FM';
-    currentStation.innerText = 'EXTRA FM';
-    nowPlaying.innerText = 'EXTRA FM STREAM';
-    current.forEach((el) => el.classList.remove('active'));
-    current[0].classList.add('active');
-  }
 });
 nextBtn.addEventListener('click', () => {
   currentSong++;
@@ -68,18 +55,6 @@ nextBtn.addEventListener('click', () => {
   nowPlaying.innerText = songName;
   song.play();
   playBtn.classList.add('playing');
-  if (currentSong > 0) {
-    radioStation.innerText = 'LOCAL';
-    currentStation.innerText = 'LOCAL';
-    current.forEach((el) => el.classList.remove('active'));
-    current[1].classList.add('active');
-  } else {
-    radioStation.innerText = 'EXTRA FM';
-    currentStation.innerText = 'EXTRA FM';
-    nowPlaying.innerText = 'EXTRA FM STREAM';
-    current.forEach((el) => el.classList.remove('active'));
-    current[0].classList.add('active');
-  }
 });
 
 song.volume = 0.5;
@@ -112,18 +87,6 @@ current.forEach((el) =>
     el.classList.add('active');
     radioStation.innerText = el.innerText;
     currentStation.innerText = el.innerText;
-
-    if (el.classList.contains('localStation')) {
-      currentSong = 1;
-      song.setAttribute('src', songs[currentSong]);
-      let songName = song.getAttribute('src').slice(6, -4).toUpperCase();
-      nowPlaying.innerText = songName;
-    } else {
-      currentSong = 0;
-      song.setAttribute('src', songs[currentSong]);
-      nowPlaying.innerText = 'EXTRA FM STREAM';
-    }
-    playBtn.classList.add('playing');
-    song.play();
+    song.setAttribute('src', songs[currentSong]);
   })
 );
