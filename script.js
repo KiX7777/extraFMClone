@@ -34,7 +34,7 @@ playBtn.addEventListener('click', () => {
   }
 });
 
-prevBtn.addEventListener('click', () => {
+function prevSong() {
   currentSong--;
   if (currentSong < 0) {
     currentSong = songs.length - 1;
@@ -57,8 +57,10 @@ prevBtn.addEventListener('click', () => {
     current.forEach((el) => el.classList.remove('active'));
     current[0].classList.add('active');
   }
-});
-nextBtn.addEventListener('click', () => {
+}
+
+prevBtn.addEventListener('click', prevSong);
+function nextSong() {
   currentSong++;
   if (currentSong >= songs.length) {
     currentSong = 0;
@@ -80,7 +82,11 @@ nextBtn.addEventListener('click', () => {
     current.forEach((el) => el.classList.remove('active'));
     current[0].classList.add('active');
   }
-});
+}
+
+nextBtn.addEventListener('click', nextSong);
+
+song.addEventListener('ended', nextSong);
 
 song.volume = 0.5;
 
