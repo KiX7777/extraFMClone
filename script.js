@@ -91,10 +91,10 @@ volume.addEventListener('input', (e) => {
 
 muteBtn.addEventListener('click', () => {
   muteBtn.classList.toggle('muted');
-  if (song.volume === 0) {
-    song.volume = 1;
+  if (song.muted) {
+    song.muted = false;
   } else {
-    song.volume = 0;
+    song.muted = true;
   }
 });
 
