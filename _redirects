@@ -1,2 +1,2 @@
 
-/api*  http://streams.extrafm.hr:8110 :splat 200
+/api*  http://streams.extrafm.hr:8110/stream :splat 200

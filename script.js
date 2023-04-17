@@ -20,7 +20,7 @@ const songs = [
   'songs/MINA KOSTIĆ - GRUDI OD BETONA.mp3',
   'songs/Marinko Rokvić - Tri U Jednoj.mp3',
   'songs/MILE KITIĆ - ZAPALIĆU SVE.mp3',
-  '/api/stream',
+  '/api/',
 ];
 let currentSong = 0;
 
