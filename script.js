@@ -11,10 +11,12 @@ const arrows = document.querySelectorAll('.chosenStation img');
 const chosenStation = document.querySelector('.chosenStation');
 const current = document.querySelectorAll('.current');
 const radioStation = document.querySelector('.radioStation');
+const currentStation = document.querySelector('.currentStation');
 const stationsMenu = document.querySelector('.stationsMenu');
 const nowPlaying = document.querySelector('.nowPlaying');
 
 const songs = [
+  'http://streams.extrafm.hr:8110/stream',
   'songs/Rade Lacković - Avantura.mp3',
   'songs/MINA KOSTIĆ - GRUDI OD BETONA.mp3',
   'songs/Marinko Rokvić - Tri U Jednoj.mp3',
@@ -43,10 +45,21 @@ prevBtn.addEventListener('click', () => {
   nowPlaying.innerText = songName;
   song.play();
   playBtn.classList.add('playing');
+  if (currentSong > 0) {
+    radioStation.innerText = 'LOCAL';
+    currentStation.innerText = 'LOCAL';
+    current.forEach((el) => el.classList.remove('active'));
+    current[1].classList.add('active');
+  } else {
+    radioStation.innerText = 'EXTRA FM';
+    currentStation.innerText = 'EXTRA FM';
+    nowPlaying.innerText = 'EXTRA FM STREAM';
+    current.forEach((el) => el.classList.remove('active'));
+    current[0].classList.add('active');
+  }
 });
 nextBtn.addEventListener('click', () => {
   currentSong++;
-
   if (currentSong >= songs.length) {
     currentSong = 0;
   }
@@ -55,10 +68,21 @@ nextBtn.addEventListener('click', () => {
   nowPlaying.innerText = songName;
   song.play();
   playBtn.classList.add('playing');
+  if (currentSong > 0) {
+    radioStation.innerText = 'LOCAL';
+    currentStation.innerText = 'LOCAL';
+    current.forEach((el) => el.classList.remove('active'));
+    current[1].classList.add('active');
+  } else {
+    radioStation.innerText = 'EXTRA FM';
+    currentStation.innerText = 'EXTRA FM';
+    nowPlaying.innerText = 'EXTRA FM STREAM';
+    current.forEach((el) => el.classList.remove('active'));
+    current[0].classList.add('active');
+  }
 });
 
 song.volume = 0.5;
-// nowPlaying.innerText = songName;
 
 volume.addEventListener('input', (e) => {
   let newVol = +(e.currentTarget.value / 100);
@@ -75,12 +99,10 @@ muteBtn.addEventListener('click', () => {
 });
 
 playlistBtn.addEventListener('click', () => {
-  console.log('test');
   bottom.classList.toggle('hideBottom');
 });
 
 chosenStation.addEventListener('click', () => {
-  console.log('station');
   stationsMenu.classList.toggle('open');
 });
 
@@ -89,5 +111,23 @@ current.forEach((el) =>
     current.forEach((el) => el.classList.remove('active'));
     el.classList.add('active');
     radioStation.innerText = el.innerText;
+    currentStation.innerText = el.innerText;
+
+    if (el.classList.contains('localStation')) {
+      currentSong = 1;
+      song.setAttribute('src', songs[currentSong]);
+      let songName = song.getAttribute('src').slice(6, -4).toUpperCase();
+      nowPlaying.innerText = songName;
+    } else {
+      currentSong = 0;
+      song.setAttribute('src', songs[currentSong]);
+      nowPlaying.innerText = 'EXTRA FM STREAM';
+    }
+    playBtn.classList.add('playing');
+    song.play();
   })
 );
+
+fetch('http://streams.extrafm.hr:8110/7.html')
+  .then((res) => res.text())
+  .then((data) => console.log(data));
