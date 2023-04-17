@@ -87,6 +87,5 @@ current.forEach((el) =>
     el.classList.add('active');
     radioStation.innerText = el.innerText;
     currentStation.innerText = el.innerText;
-    song.setAttribute('src', songs[currentSong]);
   })
 );
